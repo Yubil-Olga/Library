@@ -18,6 +18,7 @@ const MainContainer = styled.main`
 `;
 
 const TotalInfo = styled.p`
+  align-self: start;
   font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.text};
 `;
@@ -68,7 +69,7 @@ const LoadMoreButton = styled.button`
 
 function App() {
   const dispatch = useAppDispatch();
-  const { books, totalItems, isLoading } = useAppSelector((x) => x.searchBooks);
+  const { books, totalItems, isLoading, nextPage } = useAppSelector((x) => x.searchBooks);
 
   const fetchBooks = () => {
     dispatch(searchBooks());
@@ -78,7 +79,7 @@ function App() {
     <MainLayout>
       <Header />
       <MainContainer>
-        {totalItems > 0 && !isLoading && (
+        {!isLoading && (
           <TotalInfo>
             Найдено книг: <b>{totalItems}</b>
           </TotalInfo>
@@ -99,7 +100,9 @@ function App() {
           ))}
         </BooksContainer>
         {isLoading && <Loader />}
-        {books.length > 0 && <LoadMoreButton onClick={fetchBooks}>Load more</LoadMoreButton>}
+        {books.length > 0 && books.length < totalItems && nextPage > 0 && (
+          <LoadMoreButton onClick={fetchBooks}>Load more</LoadMoreButton>
+        )}
       </MainContainer>
     </MainLayout>
   );

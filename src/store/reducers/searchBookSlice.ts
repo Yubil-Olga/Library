@@ -46,7 +46,6 @@ export const searchBookSlice = createSlice({
   initialState,
   reducers: {
     startNewSearch(state, action: PayloadAction<string>) {
-      console.log('set Query');
       state.query = action.payload;
       state.nextPage = 0;
       state.books = [];
@@ -67,8 +66,10 @@ export const searchBookSlice = createSlice({
       state.isLoading = false;
       if (action.payload.items) {
         state.books.push(...action.payload.items);
+        state.nextPage += 1;
+      } else {
+        state.nextPage = 0;
       }
-      state.nextPage += 1;
       state.totalItems = action.payload.totalItems;
       state.error = '';
     });
