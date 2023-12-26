@@ -11,16 +11,33 @@ const StyledHeader = styled.header`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: gray;
+  background: url('src/assets/main-background.png') center / cover no-repeat;
+
+  @media (max-width: 600px) {
+    background: url('src/assets/main-background.png') right / 150% no-repeat;
+  }
+`;
+
+const Title = styled.h1`
+  color: #50473f;
+  margin: 1rem 0;
+`;
+
+const SearchContainer = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  max-width: 20rem;
 `;
 
 export const Header = () => {
   return (
     <StyledHeader>
-      <h1>Search for books</h1>
-      <SearchField />
-      <CategorySelect />
-      <OrderSelect />
+      <Title>Search for books</Title>
+      <SearchContainer>
+        <SearchField />
+        <CategorySelect />
+        <OrderSelect />
+      </SearchContainer>
     </StyledHeader>
   );
 };
