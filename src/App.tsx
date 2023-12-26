@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useAppDispatch, useAppSelector } from 'src/store/store';
 import { searchBooks } from 'src/store/reducers/searchBookSlice';
 import { Header } from 'src/components/Header';
@@ -11,10 +11,15 @@ const MainLayout = styled.div`
 `;
 
 const MainContainer = styled.main`
-  padding: 15rem 1rem;
+  padding: 17rem 1rem;
   display: grid;
   grid-gap: 2rem;
   align-items: center;
+`;
+
+const TotalInfo = styled.p`
+  font-size: 1.2rem;
+  color: #50473f;
 `;
 
 const BooksContainer = styled.div`
@@ -24,10 +29,41 @@ const BooksContainer = styled.div`
   }
 `;
 
+const rotation = keyframes`
+0% {
+  transform: rotate(0deg);
+}
+100% {
+  transform: rotate(360deg);
+}
+`;
+
 const Loader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin: 2rem auto;
+  border: 0.25rem solid #aaa095;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: ${rotation} 1s linear infinite;
+`;
+
+const LoadMoreButton = styled.button`
+  border-radius: 2rem;
+  padding: 1rem 3rem;
+  width: max-content;
+  background: #e6ddd4;
+  color: #50473f;
+  border: none;
+  margin: 0 auto;
+  cursor: pointer;
+
+  &:hover {
+    background: #aaa095;
+    color: #fff;
+  }
 `;
 
 function App() {
@@ -42,7 +78,11 @@ function App() {
     <MainLayout>
       <Header />
       <MainContainer>
-        <p>Найдено {totalItems} книг</p>
+        {totalItems > 0 && !isLoading && (
+          <TotalInfo>
+            Найдено книг: <b>{totalItems}</b>
+          </TotalInfo>
+        )}
         <BooksContainer>
           {books.map((book) => (
             <Card
@@ -58,8 +98,8 @@ function App() {
             />
           ))}
         </BooksContainer>
-        {isLoading && <Loader>Loading books...</Loader>}
-        {books.length > 0 && <button onClick={fetchBooks}>Load more</button>}
+        {isLoading && <Loader />}
+        {books.length > 0 && <LoadMoreButton onClick={fetchBooks}>Load more</LoadMoreButton>}
       </MainContainer>
     </MainLayout>
   );
