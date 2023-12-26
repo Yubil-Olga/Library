@@ -12,8 +12,9 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  background-color: #e6ddd4;
+  background-color: ${({ theme }) => theme.colors.bgLight};
   padding: 2rem 0;
+  overflow: hidden;
   transition: transform 0.2s ease-in-out;
   animation: fade-in 1s;
 
@@ -38,7 +39,7 @@ const ImageFailed = styled.div`
   width: 60%;
   height: 15rem;
   margin: 0 auto;
-  color: #50473f;
+  color: ${({ theme }) => theme.colors.text};
   border: 1px solid currentColor;
 `;
 

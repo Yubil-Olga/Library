@@ -20,7 +20,7 @@ const StyledHeader = styled.header`
 `;
 
 const Title = styled.h1`
-  color: #50473f;
+  color: ${({ theme }) => theme.colors.text};
   margin: 1rem 0;
 `;
 

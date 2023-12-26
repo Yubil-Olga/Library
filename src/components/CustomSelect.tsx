@@ -48,13 +48,14 @@ const OptionsList = styled.ul`
   margin: 0.25rem 0;
   padding: 0;
   overflow: hidden;
+  box-shadow: 0.15rem 0.15rem 0.5rem ${({ theme }) => theme.colors.bgLight};
 `;
 
 const OptionItem = styled.li`
   list-style: none;
   padding: 0.5rem;
   &:hover {
-    background: #e6ddd4;
+    background: ${({ theme }) => theme.colors.bgLight};
   }
 `;
 

@@ -19,7 +19,7 @@ const MainContainer = styled.main`
 
 const TotalInfo = styled.p`
   font-size: 1.2rem;
-  color: #50473f;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const BooksContainer = styled.div`
@@ -42,7 +42,7 @@ const Loader = styled.div`
   width: 3rem;
   height: 3rem;
   margin: 2rem auto;
-  border: 0.25rem solid #aaa095;
+  border: 0.25rem solid ${({ theme }) => theme.colors.bgDark};
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
@@ -54,14 +54,14 @@ const LoadMoreButton = styled.button`
   border-radius: 2rem;
   padding: 1rem 3rem;
   width: max-content;
-  background: #e6ddd4;
-  color: #50473f;
+  background: ${({ theme }) => theme.colors.bgLight};
+  color: ${({ theme }) => theme.colors.text};
   border: none;
   margin: 0 auto;
   cursor: pointer;
 
   &:hover {
-    background: #aaa095;
+    background: ${({ theme }) => theme.colors.bgDark};
     color: #fff;
   }
 `;
