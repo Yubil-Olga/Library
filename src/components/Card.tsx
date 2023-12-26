@@ -15,9 +15,19 @@ const StyledCard = styled.div`
   background-color: #e6ddd4;
   padding: 2rem 0;
   transition: transform 0.2s ease-in-out;
+  animation: fade-in 1s;
 
   &:hover {
     transform: scale(1.02);
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 100;
+    }
   }
 `;
 
