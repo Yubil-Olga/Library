@@ -14,13 +14,14 @@ const MainContainer = styled.main`
   padding: 15rem 1rem;
   display: grid;
   grid-gap: 2rem;
-  alin-items: center;
+  align-items: center;
 `;
 
 const BooksContainer = styled.div`
   display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
 `;
 
 const Loader = styled.div`

@@ -12,6 +12,7 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: center;
   background: url('src/assets/main-background.png') center / cover no-repeat;
+  z-index: 1000;
 
   @media (max-width: 600px) {
     background: url('src/assets/main-background.png') right / 150% no-repeat;
